@@ -5,7 +5,7 @@
 #^d mode$: mode.enable ("dictation")
 
 # Define a hotkey to toggle Talon
-key(ctrl-shift-t): speech.toggle()
+key(ctrl-alt-t): speech.toggle()
 
 ^(focus term)+$: 
 
