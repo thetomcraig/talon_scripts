@@ -7,7 +7,7 @@ win right:
     key(esc)
 
 win full:
-    key(alt-ctrl-shift-fo
+    key(alt-ctrl-shift-f)
 win max:
     key(alt-ctrl-shift-f)
 
