@@ -1,20 +1,22 @@
-win left:
-    key(alt-ctrl-shift-a)
-    key(esc)
+tile left:
+    key(cmd-ctrl-shift-a)
 
-win right:
-    key(alt-ctrl-shift-d)
-    key(esc)
+tile right:
+    key(cmd-ctrl-shift-d)
 
-win full:
-    key(alt-ctrl-shift-f)
-win max:
-    key(alt-ctrl-shift-f)
+tile full | tile max:
+    key(cmd-ctrl-shift-f)
 
-win next:
-    key(alt-ctrl-shift-x)
+tile next:
+    key(cmd-`)
+tile last:
+    key(cmd-shift-`)
 
-win min:
-    key(ctrl-m)
+tile min:
+    key(cmd-m)
+
+splay next:
+    key(cmd-ctrl-shift-x)
+    
 expose:
-    key(ctrl-tab) 
+    key(cmd-ctrl-shift-g)
