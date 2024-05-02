@@ -4,3 +4,6 @@
 key(ctrl-cmd-t): speech.toggle()
 
 ^(focus term)+$: 
+
+trip quote: insert('"""')
+trip grave: insert('```')
