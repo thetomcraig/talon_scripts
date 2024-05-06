@@ -20,5 +20,6 @@ slapper:
 trip quote: insert('"""')
 trip grave: insert('```')
 cent finish: insert('.  ')
+splay <number>: user.move_window_to_screen(number)
 
 # inside trip graves: user.inside_trip_graves()
