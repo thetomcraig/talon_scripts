@@ -1,9 +1,24 @@
-^(talon wake)+$: speech.enable()
-^(drowse | alright | all right)+$: speech.disable()
-# Define a hotkey to toggle Talon
-key(ctrl-cmd-t): speech.toggle()
+^(talon wake)+$: 
+    speech.enable()
+    app.notify("Listening")
+^(drowse | alright | all right)+$:
+    speech.disable()
+    app.notify("Sleeping!")
+key(ctrl-cmd-t):
+    speech.toggle()
+    app.notify("Talon toggled!")
 
-^(focus term)+$: 
+
+slam: edit.paste()
+slammer:
+    edit.paste()
+    key(enter)
+slapper:
+    edit.line_insert_down()
+    edit.line_insert_down()
 
 trip quote: insert('"""')
 trip grave: insert('```')
+cent finish: insert('.  ')
+
+# inside trip graves: user.inside_trip_graves()
