@@ -1,12 +1,7 @@
 ^(talon wake)+$: speech.enable()
-^(drowse)+$: speech.disable()
+^(wake up)+$: speech.enable()
 
-#^sea mode$: mode.enable ("command")
-#^d mode$: mode.enable ("dictation")
+^(drowse)+$: speech.disable()
 
 # Define a hotkey to toggle Talon
 key(ctrl-shift-t): speech.toggle()
-
-^(focus term)+$: 
-
-
