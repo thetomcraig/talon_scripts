@@ -8,6 +8,12 @@ key(ctrl-cmd-t):
     speech.toggle()
     app.notify("Talon toggled!")
 
+# disk all: edit.save_all()
+# disker: edit.save_all()
+
+# # Misc Edit
+# scrape: user.escape()
+# abort: user.escape()
 
 slam: edit.paste()
 slammer:
