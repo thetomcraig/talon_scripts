@@ -15,6 +15,7 @@ key(ctrl-cmd-t):
 # scrape: user.escape()
 # abort: user.escape()
 
+tile hide: key(cmd-h)
 slam: edit.paste()
 slammer:
     edit.paste()
@@ -29,20 +30,26 @@ trip quote: insert('"""')
 trip grave: insert('```')
 trip tick: insert('```')
 cent finish: insert('.  ')
+capper: insert('.  ')
 dripper: insert(', ')
 stacker: insert(': ')
 dasher: insert('- ')
+prober: insert('?  ')
 tabber: insert('\t\t')
 pointer: insert(' -> ')
 arrower: insert(' -> ')
 piper: insert(' | ')
+spacer: insert('  ')
+wiper:
+    key(backspace)
+    key(backspace)
+
 set equal: insert(' = ')
 
-snip email: insert('thetomcraig@icloud.com')
-snip work_email: insert('tom.craig@ayahealthcare.com')
-#snip email password: user.enter_secret('email_password')
+snip email: user.enter_secret("email")
 snip pass: user.enter_secret("password")
 snip long pass: user.enter_secret("computer_password")
+snip phone: user.enter_secret("phone_number")
 show prefs | prefs show: user.show_preferences()
 splay <number>: user.move_window_to_screen(number)
 
@@ -63,3 +70,5 @@ tile full: user.full_screen_window()
 # inside trip graves: user.inside_trip_graves()
 
 tab pin: key(shift-alt-p)
+
+clear notes: user.clear_notifications()
