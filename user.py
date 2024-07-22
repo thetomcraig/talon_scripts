@@ -6,8 +6,32 @@ from talon.mac import applescript
 ctx = Context()
 mod = Module()
 
+def get_secret(desired_value: str):
+    """Get a secret value from the secrets.txt file"""
+    secret_dict = {}
+    user_dir_path = os.path.join(os.path.expanduser('~'), '.talon', 'user', 'talon_scripts')
+
+    with open(os.path.join(user_dir_path, 'secrets.txt'), 'r') as f:
+        for line in f.readlines():
+            key, value = line.strip().split(',')
+            secret_dict[key] = value
+
+    return secret_dict[desired_value]
+
+
+# AI Tools Setup
+os.environ["OPENAI_API_KEY"] = "openai_api_key"
+
+
 @ctx.action_class("user")
 class UserActions:
+
+    def enter_secret(desired_secret: str):
+        """Read from secret text file and enter text"""
+        secret = get_secret(desired_secret)
+        actions.insert(secret)
+        actions.key("enter")
+
     def select_dont_save():
         actions.key("space")
 
@@ -18,37 +42,8 @@ class UserActions:
         actions.key("cmd-,")
 
     def clear_notifications():
-        applescript.run(
-            r"""
-            tell application "System Events"
-                try
-                    set _groups to groups of UI element 1 of scroll area 1 of group 1 of window "Notification Center" of application process "NotificationCenter"
-                    repeat with _group in _groups
-                        set temp to value of static text 1 of _group
-                        log temp
-                        set actionsList to name of every action of _group
-                        repeat with actionName in actionsList
-                            log actionName
-                        end repeat
-                        
-                        perform (first action of _group where description is "Clear All")
-                    end repeat
-                end try
-            end tell"""
-            )
-
-    def enter_secret(desired_secret: str):
-        """Read from secret text file and enter text"""
-        secret_dict = {}
-        user_dir_path = os.path.join(os.path.expanduser('~'), '.talon', 'user', 'talon_scripts')
-
-        with open(os.path.join(user_dir_path, 'secrets.txt'), 'r') as f:
-            for line in f.readlines():
-                key, value = line.strip().split(',')
-                secret_dict[key] = value
-
-        actions.insert(secret_dict[desired_secret])
-        actions.key("enter")
+        """Using this in conjunction with BetterTouchTool, no solution using AppleScript worked"""
+        actions.key("cmd-ctrl-shift-n")
 
 def disable():
     actions.speech.disable()
