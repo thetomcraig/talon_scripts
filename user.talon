@@ -1,8 +1,3 @@
-^(talon wake)+$: 
-    tracking.control_toggle(1)
-    tracking.control_toggle(1)
-    speech.enable()
-    app.notify("Listening")
 
 ^(drowse | alright | all right)+$:
     speech.disable()
@@ -12,7 +7,6 @@
 
 key(ctrl-cmd-t):
     speech.toggle()
-    
     app.notify("Talon toggled!")
 
 # disk all: edit.save_all()
@@ -83,7 +77,20 @@ run debug:
     insert('docker compose --profile debug up')
     key(up)
     key(enter)
-    
+log in to int:
+    insert('sshint')    
+    key(enter)
+log in to dev:
+    insert('sshdev')    
+    key(enter)
+django shell [<user.text>]:
+    insert('export POLARIS_BE_ENV=')
+    user.insert_formatted(user.text, "ALL_CAPS")
+    key(enter)
+    insert('python manage.py shell --settings=polaris.settings.')
+    insert(user.text or "")
+    key(enter)
+
 pager: edit.page_down()
 
 don't save: user.select_dont_save()

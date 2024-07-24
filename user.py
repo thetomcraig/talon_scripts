@@ -20,7 +20,7 @@ def get_secret(desired_value: str):
 
 
 # AI Tools Setup
-os.environ["OPENAI_API_KEY"] = "openai_api_key"
+os.environ["OPENAI_API_KEY"] = get_secret("openai_api_key")
 
 
 @ctx.action_class("user")
