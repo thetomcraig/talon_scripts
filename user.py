@@ -26,6 +26,22 @@ os.environ["OPENAI_API_KEY"] = get_secret("openai_api_key")
 @ctx.action_class("user")
 class UserActions:
 
+    def sleep_talon():
+        actions.tracking.control_zoom_toggle(False)
+        actions.speech.disable()
+        actions.app.notify("Talon asleep")
+
+    def sleep_eye_tracker():
+        actions.tracking.control_zoom_toggle(False)
+        actions.app.notify("Eye tracking asleep")
+
+    def sleep_all():
+        actions.tracking.control_zoom_toggle(False)
+        actions.speech.disable()
+        app.notify("Turn in of work complete!!")
+        actions.sleep("180ms")
+        applescript.run(r'''do shell script "pmset sleepnow"''')
+
     def enter_secret(desired_secret: str):
         """Read from secret text file and enter text"""
         secret = get_secret(desired_secret)
@@ -52,6 +68,14 @@ app.register("ready", disable)
 
 @mod.action_class
 class Actions:
+    def sleep_talon():
+        """Sleep talon"""
+
+    def sleep_eye_tracker():
+        """Sleep the eye tracker"""
+
+    def sleep_all():
+        """Sleep the computer and talon"""
 
     def select_dont_save():
         """Select "don't save" from the dialog"""
