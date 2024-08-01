@@ -1,23 +1,33 @@
-
-^(drowse | alright | all right)+$:
-    speech.disable()
-    app.notify("Sleeping!")
-    tracking.control_toggle(0)
+closing time: user.sleep_all()
+she's coming | she's here: user.sleep_talon()
+sleep I | sleep eye | sleep eyes: user.sleep_eye_tracker()
 
 
-key(ctrl-cmd-t):
-    speech.toggle()
-    app.notify("Talon toggled!")
 
 # disk all: edit.save_all()
 # disker: edit.save_all()
 
-# # Misc Edit
-# scrape: user.escape()
-# abort: user.escape()
+scrape: user.escape()
+abort: user.escape()
+coder : user.switcher_focus("Code")
+slack: user.switcher_focus("Slack")
+postman: user.switcher_focus("Postman")
+apps: user.switcher_launch("/System/Applications/Mission Control.app")
+terminal | term: user.switcher_focus("term")
+brave : user.switcher_focus("brave")
+chrome : user.switcher_focus("chrome")
+outlook : user.switcher_focus("outlook")
+teams: user.switcher_focus("teams")
+mail: user.switcher_focus("mail")
+merge: user.switcher_focus("Araxis Merge")
+
 
 tile hide: key(cmd-h)
 tile full: user.full_screen_window()
+tile close: app.window_close()
+next win | tile next | tyler: app.window_next()
+tile last: app.window_previous()
+tile min | min win | win min: app.window_hide()
 
 slam: edit.paste()
 slammer:
@@ -47,10 +57,10 @@ prober: insert('?  ')
 tabber: insert('\t\t')
 pointer: insert(' -> ')
 arrower: insert(' -> ')
+breather: insert(', ')
 piper: insert(' | ')
 spacer: insert('  ')
 set equal: insert(' = ')
-
 
 
 snip email: user.enter_secret("email")
@@ -90,6 +100,27 @@ django shell [<user.text>]:
     insert('python manage.py shell --settings=polaris.settings.')
     insert(user.text or "")
     key(enter)
+screen flask:
+    insert('sudo screen -r $(sudo screen -ls | grep flask | ')
+    insert('awk "{print $1')
+    insert('}")')
+    key(enter)
+screen django:
+    insert('sudo screen -r $(sudo screen -ls | grep django | ')
+    insert('awk "{print $1')
+    insert('}")')
+    key(enter)
+docker running:
+    insert('docker ps')
+    key(enter)
+docker down:
+    insert('docker compose down --build')
+    key(enter)
+docker up:
+    insert('docker compose up --build')
+    key(enter)
+docker nuke:
+    insert('dcnk')
 
 pager: edit.page_down()
 
