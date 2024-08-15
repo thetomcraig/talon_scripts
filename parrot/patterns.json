@@ -1,0 +1,39 @@
+{
+	"pop": {
+		"sounds": ["pop_1"],
+		"threshold": {
+			">power": 20,
+			">probability": 0.8
+		},
+		"throttle": {
+			"pop": 0.15
+		}
+	},
+	"hiss": {
+		"sounds": ["hiss"],
+		"threshold": {
+			">power": 13,
+			">probability": 0.9
+		},
+		"graceperiod": 0.1,
+		"grace_threshold": {
+			">power": 5,
+			">probability": 0.6
+		}
+	},
+	"shush": {
+		"sounds": ["sush"],
+		"threshold": {
+			">power": 10,
+			">probability": 0.9
+		},
+		"graceperiod": 0.1,		
+		"grace_threshold": {
+			">power": 5,
+			">probability": 0.4
+		},
+		"throttle": {
+			"ch": 0.2
+		}
+	}
+}
