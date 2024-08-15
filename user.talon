@@ -2,7 +2,7 @@ closing time: user.sleep_all()
 she's coming | she's here: user.sleep_talon()
 sleep I | sleep eye | sleep eyes: user.sleep_eye_tracker()
 
-
+debugging: user.debugging()
 
 # disk all: edit.save_all()
 # disker: edit.save_all()
@@ -12,7 +12,7 @@ abort: user.escape()
 coder : user.switcher_focus("Code")
 slack: user.switcher_focus("Slack")
 postman: user.switcher_focus("Postman")
-apps: user.switcher_launch("/System/Applications/Mission Control.app")
+apps | tiles: user.switcher_launch("/System/Applications/Mission Control.app")
 terminal | term: user.switcher_focus("term")
 brave : user.switcher_focus("brave")
 chrome : user.switcher_focus("chrome")
@@ -24,7 +24,7 @@ merge: user.switcher_focus("Araxis Merge")
 
 tile hide: key(cmd-h)
 tile full: user.full_screen_window()
-tile close: app.window_close()
+tile close | tile kill | kill tile: app.window_close()
 next win | tile next | tyler: app.window_next()
 tile last: app.window_previous()
 tile min | min win | win min: app.window_hide()
@@ -53,6 +53,7 @@ cent finish: insert('.  ')
 capper: insert('.  ')
 stacker: insert(': ')
 dasher: insert('- ')
+hasher | hash er: insert('# ')
 prober: insert('?  ')
 tabber: insert('\t\t')
 pointer: insert(' -> ')
@@ -64,8 +65,7 @@ set equal: insert(' = ')
 
 
 snip email: user.enter_secret("email")
-snip pass: user.enter_secret("password")
-snip long pass: user.enter_secret("computer_password")
+snip  pass: user.enter_secret("computer_password")
 snip phone: user.enter_secret("phone_number")
 show prefs | prefs show: user.show_preferences()
 splay <number>: user.move_window_to_screen(number)
@@ -124,7 +124,7 @@ docker nuke:
 
 pager: edit.page_down()
 
-don't save: user.select_dont_save()
+don't save | no save: user.select_dont_save()
 
 tab pin: key(shift-alt-p)
 

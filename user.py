@@ -1,17 +1,18 @@
 import os
+import sys
 
+import talon
 from talon import Context, Module, actions, app
-from talon.mac import applescript
 
 ctx = Context()
 mod = Module()
 
 def get_secret(desired_value: str):
-    """Get a secret value from the secrets.txt file"""
+    """Get a secret value from the secrets.csv file"""
     secret_dict = {}
-    user_dir_path = os.path.join(os.path.expanduser('~'), '.talon', 'user', 'talon_scripts')
+    user_dir_path = os.path.join(os.getcwd(), 'user', 'talon_scripts')
 
-    with open(os.path.join(user_dir_path, 'secrets.txt'), 'r') as f:
+    with open(os.path.join(user_dir_path, 'secrets.csv'), 'r') as f:
         for line in f.readlines():
             key, value = line.strip().split(',')
             secret_dict[key] = value
@@ -35,12 +36,15 @@ class UserActions:
         actions.tracking.control_zoom_toggle(False)
         actions.app.notify("Eye tracking asleep")
 
+    def debugging():
+        print(os.getcwd())
+
     def sleep_all():
         actions.tracking.control_zoom_toggle(False)
         actions.speech.disable()
         app.notify("Turn in of work complete!!")
         actions.sleep("180ms")
-        applescript.run(r'''do shell script "pmset sleepnow"''')
+        actions.user.system_command("pmset sleepnow")
 
     def enter_secret(desired_secret: str):
         """Read from secret text file and enter text"""
@@ -76,6 +80,9 @@ class Actions:
 
     def sleep_all():
         """Sleep the computer and talon"""
+
+    def debugging():
+        """Where I debug stuff"""
 
     def select_dont_save():
         """Select "don't save" from the dialog"""
