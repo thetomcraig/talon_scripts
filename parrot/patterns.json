@@ -11,8 +11,9 @@
 	},
 	"hiss": {
 		"sounds": ["hiss"],
+		"detect_after":0.2,
 		"threshold": {
-			">power": 13,
+			">power": 8,
 			">probability": 0.9
 		},
 		"graceperiod": 0.1,
@@ -23,8 +24,9 @@
 	},
 	"shush": {
 		"sounds": ["sush"],
+		"detect_after":0.08,
 		"threshold": {
-			">power": 10,
+			">power": 5,
 			">probability": 0.9
 		},
 		"graceperiod": 0.1,		

@@ -1,80 +1,33 @@
+mode: command
+mode: dictation
+-
+
+# parrot(pop):
+#     user.debug("pop {power}")
+#     user.noise_pop()
+
 # parrot(cluck):
-# 	print("cluck")
+#     user.debug("cluck {power}")
+#     user.noise_cluck()
 
-# parrot(tut):
-# 	print("tut")
+parrot(shush):
+    user.noise_debounce("shush", true)
+parrot(shush:stop):
+    user.noise_debounce("shush", false)
 
-# parrot(palate_click):
-# 	print("palate_click")
+parrot(hiss):
+    user.noise_debounce("hiss", true)
+parrot(hiss:stop):
+    user.noise_debounce("hiss", false)
 
 parrot(pop):
 	print("pop")
 
-# parrot(gluck):
-# 	print("gluck")
 
-# parrot(finger_snap):
-# 	print("finger_snap")
+# parrot(hiss):
+# 	print("hiss")
 
-# parrot(ch):
-# 	print("ch")
+# parrot(shush):
+# 	print("shush")
 
-# parrot(ah):
-# 	print("ah")
-
-# parrot(oh):
-# 	print("oh")
-
-# parrot(ee):
-# 	print("ee")
-
-# parrot(ue):
-# 	print("ue")
-
-# parrot(ae):
-# 	print("ae")
-
-# parrot(horse):
-# 	print("horse")
-
-# parrot(whistle):
-# 	print("whistle")
-
-# parrot(chopper):
-# 	print("chopper")
-
-# parrot(hurr):
-# 	print("hurr")
-
-# parrot(hmm):
-# 	print("hmm")
-
-# parrot(oo):
-# 	print("oo")
-
-# parrot(lll):
-# 	print("lll")
-
-# parrot(yee):
-# 	print("yee")
-
-# parrot(uh):
-# 	print("uh")
-
-# parrot(fff):
-# 	print("fff")
-
-# parrot(buzz):
-# 	print("buzz")
-
-# parrot(generator):
-# 	print("generator")
-
-parrot(hiss):
-	print("hiss")
-
-parrot(shush):
-	print("shush")
-
-# parrot(x):
-# 	print("x")
+	
