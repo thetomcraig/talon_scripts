@@ -1,14 +1,19 @@
+# keep this around to easily debug stuff
+run debug function: user.debugging()
+
+# Sleep/Wake functions
 closing time: user.sleep_all()
 she's coming | she's here: user.sleep_talon()
 sleep I | sleep eye | sleep eyes: user.sleep_eye_tracker()
 
-debugging: user.debugging()
+# General app stuff
+show prefs | prefs show: user.show_preferences()
+show help | help menu:
+    key(cmd-shift-?)
+don't save | no save: user.select_dont_save()
+tab pin: key(shift-alt-p)
 
-# disk all: edit.save_all()
-# disker: edit.save_all()
-
-scrape: user.escape()
-abort: user.escape()
+# App launching
 coder : user.switcher_focus("Code")
 slack: user.switcher_focus("Slack")
 postman: user.switcher_focus("Postman")
@@ -20,15 +25,18 @@ outlook : user.switcher_focus("outlook")
 teams: user.switcher_focus("teams")
 mail: user.switcher_focus("mail")
 merge: user.switcher_focus("Araxis Merge")
+clear notes: user.clear_notifications()
 
-
+# Window functionality
 tile hide: key(cmd-h)
 tile full: user.full_screen_window()
 tile close | tile kill | kill tile: app.window_close()
 next win | tile next | tyler: app.window_next()
 tile last: app.window_previous()
 tile min | min win | win min: app.window_hide()
+splay <number>: user.move_window_to_screen(number)
 
+# General editing
 slam: edit.paste()
 slammer:
     edit.paste()
@@ -43,7 +51,14 @@ chopper:
     key(delete)
     key(delete)
 
+# Keys
+scrape: user.escape()
+abort: user.escape()
 
+# Navigation
+pager: edit.page_down()
+
+# Symbols
 shebang: insert('#! ')
 dub space: insert('  ')
 trip quote: insert('"""')
@@ -63,16 +78,12 @@ piper: insert(' | ')
 spacer: insert('  ')
 set equal: insert(' = ')
 
-
+# Snippets, secrets
 snip email: user.enter_secret("email")
 snip  pass: user.enter_secret("computer_password")
 snip phone: user.enter_secret("phone_number")
-show prefs | prefs show: user.show_preferences()
-splay <number>: user.move_window_to_screen(number)
 
-show help | help menu:
-    key(cmd-shift-?)
-
+# Development work
 rerun it: 
     user.switcher_focus("term")
     key(up)
@@ -121,11 +132,3 @@ docker up:
     key(enter)
 docker nuke:
     insert('dcnk')
-
-pager: edit.page_down()
-
-don't save | no save: user.select_dont_save()
-
-tab pin: key(shift-alt-p)
-
-clear notes: user.clear_notifications()
