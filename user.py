@@ -2,13 +2,17 @@ import os
 import sys
 
 import talon
-from talon import Context, Module, actions, app
+from talon import Context, Module, actions, app, ctrl
 
 ctx = Context()
 mod = Module()
 
 def get_secret(desired_value: str):
-    """Get a secret value from the secrets.csv file"""
+    """
+    Helper function to get secrets in a local csv file.
+    File should be CSV file in THIS directory, and look like:
+        secretName,secretValue
+    """
     secret_dict = {}
     user_dir_path = os.path.join(os.getcwd(), 'user', 'talon_scripts')
 
@@ -19,13 +23,14 @@ def get_secret(desired_value: str):
 
     return secret_dict[desired_value]
 
-
-# AI Tools Setup
-os.environ["OPENAI_API_KEY"] = get_secret("openai_api_key")
-
-
 @ctx.action_class("user")
 class UserActions:
+    def debugging():
+        # print(os.getcwd())
+        # actions.app.notify("Debug")
+        print(ctrl.mouse_pos())
+        ctrl.mouse_move(50, 50)
+
 
     def sleep_talon():
         actions.tracking.control_zoom_toggle(False)
@@ -35,9 +40,6 @@ class UserActions:
     def sleep_eye_tracker():
         actions.tracking.control_zoom_toggle(False)
         actions.app.notify("Eye tracking asleep")
-
-    def debugging():
-        print(os.getcwd())
 
     def sleep_all():
         actions.tracking.control_zoom_toggle(False)
@@ -67,9 +69,6 @@ class UserActions:
 
 def disable():
     actions.speech.disable()
-
-app.register("ready", disable)
-
 @mod.action_class
 class Actions:
     def sleep_talon():
@@ -99,13 +98,11 @@ class Actions:
     def clear_notifications(): 
         """Clear notifications and notification center on macOS"""
 
-        
-        
-#     def inside_trip_graves():
-#         actions.insert('```')
-#         actions.insert('\n')
-#         actions.insert('```')
-#         actions.sleep("500ms")
-#         actions.key("up")
-#         actions.insert('\n')
 
+
+#####################
+# App startup setup #
+#####################
+# AI Tools
+os.environ["OPENAI_API_KEY"] = get_secret("openai_api_key")
+app.register("ready", disable)
