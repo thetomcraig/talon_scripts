@@ -37,5 +37,18 @@
 		"throttle": {
 			"ch": 0.2
 		}
+	},
+	"tsk": {
+		"sounds": ["tsk"],
+		"detect_after":0.2,
+		"threshold": {
+			">power": 8,
+			">probability": 0.9
+		},
+		"graceperiod": 0.1,
+		"grace_threshold": {
+			">power": 5,
+			">probability": 0.6
+		}
 	}
 }

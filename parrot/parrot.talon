@@ -23,11 +23,5 @@ parrot(hiss:stop):
 parrot(pop):
 	print("pop")
 
-
-# parrot(hiss):
-# 	print("hiss")
-
-# parrot(shush):
-# 	print("shush")
-
-	
+parrot(tsk):
+    print("tsk")
