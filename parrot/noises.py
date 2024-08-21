@@ -2,6 +2,8 @@ import time
 
 from talon import Context, Module, actions, cron
 
+from ..talon_gaze_ocr.gaze_ocr_talon import move_cursor_to_gaze_point_helper
+
 mod = Module()
 state = {}
 cron_jobs = {}
@@ -26,6 +28,7 @@ class UserActions:
 
     def noise_shush_start():
         global shush_start
+        move_cursor_to_gaze_point_helper()
         shush_start = time.perf_counter()
         actions.user.mouse_scroll_up_continuous()
 
@@ -36,6 +39,8 @@ class UserActions:
         actions.user.mouse_scroll_stop()
 
     def noise_hiss_start():
+        global hiss_start
+        move_cursor_to_gaze_point_helper()
         actions.user.mouse_scroll_down_continuous()
 
     def noise_hiss_stop():

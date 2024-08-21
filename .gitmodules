@@ -1,0 +1,3 @@
+[submodule "talon-gaze-ocr"]
+	path = talon-gaze-ocr
+	url = https://github.com/wolfmanstout/talon-gaze-ocr.git
