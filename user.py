@@ -1,10 +1,19 @@
 import os
-import sys
 
-import talon
 from talon import Context, Module, actions, app, ctrl
+from user.talon_gaze_ocr.gaze_ocr_talon import move_cursor_to_gaze_point_helper
 
 ctx = Context()
+
+# @ctx.action_class("tracking")
+# class TrackingActions:
+#     def control_zoom_toggle(state: bool=False):
+#         actions.next(state)
+#         if state:
+#             # Unregistered zoom mouse built in pop event.
+#             noise.unregister("pop", eye_zoom_mouse.zoom_mouse.on_pop)
+
+
 mod = Module()
 
 def get_secret(desired_value: str):
@@ -29,7 +38,9 @@ class UserActions:
         # print(os.getcwd())
         # actions.app.notify("Debug")
         print(ctrl.mouse_pos())
-        ctrl.mouse_move(50, 50)
+        
+        move_cursor_to_gaze_point_helper()
+        print(ctrl.mouse_pos())
 
 
     def sleep_talon():
