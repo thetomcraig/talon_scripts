@@ -41,8 +41,8 @@
 	"tsk": {
 		"sounds": ["tsk"],
 		"threshold": {
-			">power": 125,
-			">probability": 0.9
+			">power": 120,
+			">probability": 0.85
 		},
 		"graceperiod": 0.1,
 		"grace_threshold": {

@@ -1,8 +1,10 @@
+import importlib.util
+import os
 import time
 
 from talon import Context, Module, actions, cron, ctrl
-
-from ..talon_gaze_ocr.gaze_ocr_talon import move_cursor_to_gaze_point_helper
+from talon_init import TALON_HOME
+from user.talon_gaze_ocr.gaze_ocr_talon import move_cursor_to_gaze_point_helper
 
 mod = Module()
 state = {}
@@ -31,7 +33,8 @@ class UserActions:
 
     def noise_shush_start():
         global shush_start
-        # previous_position = ctrl.mouse_pos()
+        previous_position = ctrl.mouse_pos()
+        print("location before scroll")
 
         move_cursor_to_gaze_point_helper()
         shush_start = time.perf_counter()
@@ -62,8 +65,8 @@ class Actions:
             cron.cancel(cron_jobs[name])
             state.pop(name)
 
-    def noise_pop():
-        """Noise pop"""
+    # def noise_pop():
+    #     """Noise pop"""
 
     def noise_tsk():
         """Noise tsk"""

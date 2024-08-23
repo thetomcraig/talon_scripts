@@ -17,8 +17,8 @@ parrot(hiss:stop):
     print("hiss stop")
     user.noise_debounce("hiss", false)
 
-parrot(pop):
-	user.noise_pop()
+# parrot(pop):
+# 	user.noise_pop()
 
 parrot(tsk):
     user.noise_tsk()
