@@ -1,7 +1,7 @@
 import os
+import re
 from pathlib import Path
 from tempfile import gettempdir
-import re
 
 
 def get_communication_dir_path(name: str) -> Path:
@@ -17,6 +17,7 @@ def get_communication_dir_path(name: str) -> Path:
     if hasattr(os, "getuid"):
         suffix = f"-{os.getuid()}"
 
+    print(Path(gettempdir()) / f"{name}{suffix}")
     return Path(gettempdir()) / f"{name}{suffix}"
 
 

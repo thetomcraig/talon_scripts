@@ -6,7 +6,9 @@ from ..rpc_client.rpc_client import RpcClient
 from .clippy_targets import ClippyPrimitiveTarget, ClippyTarget
 
 if app.platform == "mac":
-    rpc = RpcClient("Clippy", "cmd-shift-f18")
+    print("init clippy")
+    
+    rpc = RpcClient("Clippy", "cmd-alt-space")
 else:
     rpc = RpcClient("Clippy", "ctrl-shift-alt-o")
 

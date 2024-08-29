@@ -3,17 +3,19 @@ from uuid import uuid4
 
 from talon import actions
 
-from .types import Request
 from .get_communication_dir_path import get_communication_dir_path
-from .write_request import write_request
 from .read_json_with_timeout import read_json_with_timeout
 from .robust_unlink import robust_unlink
+from .types import Request
+from .write_request import write_request
 
 
 class RpcClient:
     def __init__(self, name: str, key: str):
         self.key = key
         self.dir_path = get_communication_dir_path(name)
+        print("self.dir_path")
+        print(self.dir_path)
         self.request_path = self.dir_path / "request.json"
         self.response_path = self.dir_path / "response.json"
 
