@@ -1,5 +1,7 @@
 # keep this around to easily debug stuff
-run debug function: user.debugging()
+run debug function:
+    user.debugging()
+    user.hud_set_visibility(1)
 
 # Sleep/Wake functions
 closing time: user.sleep_all()
@@ -14,14 +16,14 @@ don't save | no save: user.select_dont_save()
 tab pin: key(shift-alt-p)
 
 # App launching
-coder : user.switcher_focus("Code")
+coder: user.switcher_focus("Code")
 slack: user.switcher_focus("Slack")
 postman: user.switcher_focus("Postman")
 apps | tiles: user.switcher_launch("/System/Applications/Mission Control.app")
 terminal | term: user.switcher_focus("term")
-brave : user.switcher_focus("brave")
-chrome : user.switcher_focus("chrome")
-outlook : user.switcher_focus("outlook")
+brave | browse: user.switcher_focus("brave")
+chrome: user.switcher_focus("chrome")
+outlook: user.switcher_focus("outlook")
 teams: user.switcher_focus("teams")
 mail: user.switcher_focus("mail")
 merge: user.switcher_focus("Araxis Merge")
