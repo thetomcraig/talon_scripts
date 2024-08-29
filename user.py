@@ -1,17 +1,23 @@
 import os
 
-from talon import Context, Module, actions, app, ctrl
+from talon import Context, Module, actions, app, ctrl, noise
+from talon_plugins import eye_zoom_mouse
 from user.talon_gaze_ocr.gaze_ocr_talon import move_cursor_to_gaze_point_helper
 
 ctx = Context()
 
-# @ctx.action_class("tracking")
-# class TrackingActions:
-#     def control_zoom_toggle(state: bool=False):
-#         actions.next(state)
-#         if state:
-#             # Unregistered zoom mouse built in pop event.
-#             noise.unregister("pop", eye_zoom_mouse.zoom_mouse.on_pop)
+# For disabling the built in pop to click/pop to zoom functionality
+# One of my keyboards triggers this and I haven't figured out to
+# properly replace with a parrot sound yet
+DISABLE_BUILT_IN_POP_CLICK = False
+if DISABLE_BUILT_IN_POP_CLICK is True:
+    @ctx.action_class("tracking")
+    class TrackingActions:
+        def control_zoom_toggle(state: bool=False):
+                actions.next(state)
+                if state:
+                    # Unregistered zoom mouse built in pop event.
+                    noise.unregister("pop", eye_zoom_mouse.zoom_mouse.on_pop)
 
 
 mod = Module()
