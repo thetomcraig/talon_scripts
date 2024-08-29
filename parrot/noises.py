@@ -33,6 +33,7 @@ class UserActions:
 
     def noise_shush_start():
         global shush_start
+        print("shush_start")
         previous_position = ctrl.mouse_pos()
         print("location before scroll")
 
@@ -46,6 +47,7 @@ class UserActions:
 
     def noise_hiss_start():
         global hiss_start
+        print("hiss start")
         move_cursor_to_gaze_point_helper()
         hiss_start = time.perf_counter()
         actions.user.mouse_scroll_down_continuous()
@@ -65,8 +67,8 @@ class Actions:
             cron.cancel(cron_jobs[name])
             state.pop(name)
 
-    # def noise_pop():
-    #     """Noise pop"""
+    def noise_pop():
+        """Noise pop"""
 
     def noise_tsk():
         """Noise tsk"""
