@@ -19,9 +19,9 @@ tab pin: key(shift-alt-p)
 coder: user.switcher_focus("Code")
 slack: user.switcher_focus("Slack")
 postman: user.switcher_focus("Postman")
-apps | tiles: user.switcher_launch("/System/Applications/Mission Control.app")
 terminal | term: user.switcher_focus("term")
 brave | browse: user.switcher_focus("brave")
+messages | imessage: user.switcher_focus("Messages")
 chrome: user.switcher_focus("chrome")
 outlook: user.switcher_focus("outlook")
 teams: user.switcher_focus("teams")
@@ -92,12 +92,16 @@ rerun it:
     key(enter)
     sleep(200ms)
     user.switcher_focus_last()
-run local:
+run local polaris:
     insert('docker compose --profile runlocal up')
     key(up)
     key(enter)
-run debug:
+run debug polaris:
     insert('docker compose --profile debug up')
+    key(up)
+    key(enter)
+run local winnow:
+    insert('make updev')
     key(up)
     key(enter)
 log in to int:
@@ -127,10 +131,16 @@ docker running:
     insert('docker ps')
     key(enter)
 docker down:
-    insert('docker compose down --build')
+    insert('docker compose down')
     key(enter)
 docker up:
     insert('docker compose up --build')
     key(enter)
-docker nuke:
+docker volumes:
+    insert('docker volume list')
+    key(enter)
+docker nuke volumes:
+    insert('docker volume rm $(docker volume ls -q)')
+    key(enter)
+docker nuke all:
     insert('dcnk')
