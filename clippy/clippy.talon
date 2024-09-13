@@ -1,4 +1,4 @@
-clippy:
+clippy | show clip | clip show | clipboard:
     user.clippy_command_no_targets("toggleShowHide")
 
 clippy search <user.text>:
