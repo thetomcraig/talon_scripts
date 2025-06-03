@@ -114,40 +114,18 @@ rerun it:
     key(enter)
     sleep(200ms)
     user.switcher_focus_last()
-run local polaris:
-    insert('docker compose --profile runlocal up')
-    key(up)
+make up local:
+    key(ctrl-c)
+    insert('make uplocal')
     key(enter)
-run debug polaris:
-    insert('docker compose --profile debug up')
-    key(up)
+make up test:
+    key(ctrl-c)
+    insert('make uptest')
     key(enter)
-run local winnow:
-    insert('make updev')
-    key(up)
-    key(enter)
-log in to int:
-    insert('sshint')    
-    key(enter)
-log in to dev:
-    insert('sshdev')    
-    key(enter)
-django shell [<user.text>]:
-    insert('export POLARIS_BE_ENV=')
-    user.insert_formatted(user.text, "ALL_CAPS")
-    key(enter)
-    insert('python manage.py shell --settings=polaris.settings.')
-    insert(user.text or "")
-    key(enter)
-screen flask:
-    insert('sudo screen -r $(sudo screen -ls | grep flask | ')
-    insert('awk "{print $1')
-    insert('}")')
-    key(enter)
-screen django:
-    insert('sudo screen -r $(sudo screen -ls | grep django | ')
-    insert('awk "{print $1')
-    insert('}")')
+make link <user.text>$:
+    key(ctrl-c)
+    sleep(200ms)
+    insert('make link env={text}')
     key(enter)
 docker running:
     insert('docker ps')
