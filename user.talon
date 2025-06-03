@@ -108,7 +108,19 @@ snip phone: user.enter_secret("phone_number")
 
 
 # Development work
+vim approve:
+    key(ctrl-c)
+    insert(':wq')
+    key(enter)
 rerun it: 
+    key(cmd-s)
+    sleep(200ms)
+    user.switcher_focus("term")
+    key(up)
+    key(enter)
+rerun it back: 
+    key(cmd-s)
+    sleep(200ms)
     user.switcher_focus("term")
     key(up)
     key(enter)
