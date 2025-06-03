@@ -3,10 +3,16 @@ run debug function:
     user.debugging()
     user.hud_set_visibility(1)
 
-# Sleep/Wake functions
+# Talon functions
 closing time: user.sleep_all()
 she's coming | she's here: user.sleep_talon()
+calibrate: user.calibrate_eye_tracker()
 sleep I | sleep eye | sleep eyes: user.sleep_eye_tracker()
+show log:
+    insert('tail -f /Users/tomcraig/.talon/talon.log') 
+    key(enter)
+tick:
+    user.repeat_last_command()
 
 # General app stuff
 show prefs | prefs show: user.show_preferences()
