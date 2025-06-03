@@ -1,13 +1,12 @@
 import os
 
-from talon import Context, Module, actions, app, ctrl, noise
+from talon import Context, Module, actions, app, noise, ui
 from talon_plugins import eye_zoom_mouse
-from user.talon_gaze_ocr.gaze_ocr_talon import move_cursor_to_gaze_point_helper
 
 ctx = Context()
 
 # For disabling the built in pop to click/pop to zoom functionality
-# One of my keyboards triggers this and I haven't figured out to
+# One of my keyboards and airpods sometimes trigger this and I haven't figured out to
 # properly replace with a parrot sound yet
 DISABLE_BUILT_IN_POP_CLICK = False
 if DISABLE_BUILT_IN_POP_CLICK is True:
@@ -38,16 +37,30 @@ def get_secret(desired_value: str):
 
     return secret_dict[desired_value]
 
+def get_project_root_folder_name(desired_value: str):
+    folders = {}
+    user_dir_path = os.path.join(os.getcwd(), 'user', 'talon_scripts')
+
+    with open(os.path.join(user_dir_path, 'vscode_project_names.csv'), 'r') as f:
+        for line in f.readlines():
+            if not line.strip():
+                continue
+            key, value = line.strip().split(',')
+            folders[key] = value
+
+    return folders.get(desired_value, desired_value)  # Return the value or the key if not found
+
 @ctx.action_class("user")
 class UserActions:
     def debugging():
         # print(os.getcwd())
         # actions.app.notify("Debug")
-        print(ctrl.mouse_pos())
-        
-        move_cursor_to_gaze_point_helper()
-        print(ctrl.mouse_pos())
+        # print(actions.win.title())
+        # print(dir(actions.win))
+        pass
 
+    def calibrate_eye_tracker():
+        actions.tracking.calibrate()
 
     def sleep_talon():
         actions.tracking.control_zoom_toggle(False)
@@ -71,11 +84,12 @@ class UserActions:
         actions.insert(secret)
         actions.key("enter")
 
+    def repeat_last_command():
+        """Repeat the last talon command"""
+        actions.core.repeat_phrase()
+
     def select_dont_save():
         actions.key("space")
-
-    def full_screen_window():
-        actions.key("cmd-ctrl-f")
 
     def show_preferences():
         actions.key("cmd-,")
@@ -84,10 +98,47 @@ class UserActions:
         """Using this in conjunction with BetterTouchTool, no solution using AppleScript worked"""
         actions.key("cmd-ctrl-shift-n")
 
+    def open_winnow_jira_task(task_number: int): 
+        """Open a winnow jira task"""
+        actions.user.open_url(f"https://ayadev.atlassian.net/browse/WIN-{task_number}")
+
+    def open_vscode_project(project_name: str): 
+        """Open a vscode project"""
+        # Find the name of the root folder associated with the project
+        # This is the project that we want to switch to
+        root_folder_name = get_project_root_folder_name(project_name)
+
+        # If VSCode is already the front most app, do nothing.
+        # The default behavior would be to switch to the next window of vscode,
+        # but I don't want to do that here because it would be jarring the user
+        app = actions.user.get_running_app("Code")
+        if app != ui.active_app():
+            actions.user.switcher_focus_app(app)
+
+        # Access the root folder of the currently opened project based on the window title
+        # This is based on the window.title settings in VSCode
+        # These are mine
+            # ${activeEditorShort}${separator}${rootName}${separator}${profileName}${separator}focus:[${focusedView}]
+            # With separator: " | "
+        root_folder_for_current_project = actions.win.title().split(" | ")[1].strip()
+        if root_folder_for_current_project == root_folder_name:
+            # The front most project in VSCode is the one that we want, do nothing
+            return
+        
+        actions.user.vscode("projectManager.listProjects")
+        actions.sleep("100ms")
+        actions.insert(project_name)
+        actions.sleep("100ms")
+        actions.key("enter")
+
+
 def disable():
     actions.speech.disable()
 @mod.action_class
 class Actions:
+    def calibrate_eye_tracker():
+        """Calibrate the eye tracker"""
+
     def sleep_talon():
         """Sleep talon"""
 
@@ -99,6 +150,9 @@ class Actions:
 
     def debugging():
         """Where I debug stuff"""
+
+    def repeat_last_command():
+        """Repeat the last talon command"""
 
     def select_dont_save():
         """Select "don't save" from the dialog"""
@@ -114,6 +168,12 @@ class Actions:
 
     def clear_notifications(): 
         """Clear notifications and notification center on macOS"""
+
+    def open_winnow_jira_task(task_number: int): 
+        """Open a winnow jira task"""
+
+    def open_vscode_project(project_name: str): 
+        """Open a vscode project"""
 
 
 
