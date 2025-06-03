@@ -68,6 +68,8 @@ slapper:
 wiper:
     key(backspace)
     key(backspace)
+chop:
+    key(delete)
 chopper:
     key(delete)
     key(delete)
@@ -84,11 +86,9 @@ shebang: insert('#! ')
 dub space: insert('  ')
 trip quote: insert('"""')
 trip grave: insert('```')
-trip tick: insert('```')
-cent finish: insert('.  ')
-capper: insert('.  ')
+cent finish | scent finish | center | capper: insert('.  ')
 stacker: insert(': ')
-dasher: insert('- ')
+dasher | bullet: insert('- ')
 hasher | hash er: insert('# ')
 prober: insert('?  ')
 tabber: insert('\t\t')
@@ -97,12 +97,15 @@ arrower: insert(' -> ')
 breather: insert(', ')
 piper: insert(' | ')
 spacer: insert('  ')
+banger: insert('! ')
 set equal: insert(' = ')
 
 # Snippets, secrets
 snip email: user.enter_secret("email")
-snip  pass: user.enter_secret("computer_password")
+snip pass: user.enter_secret("computer_password")
+snip Microsoft pass: user.enter_secret("password")
 snip phone: user.enter_secret("phone_number")
+
 
 # Development work
 rerun it: 
