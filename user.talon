@@ -49,7 +49,6 @@ clear notes: key(cmd-ctrl-shift-g)
 
 # Window functionality
 tile hide: key(cmd-h)
-tile full: user.full_screen_window()
 tile close | tile kill | kill tile: app.window_close()
 next win | tile next | tyler: app.window_next()
 tile last: app.window_previous()
