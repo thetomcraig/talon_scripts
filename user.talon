@@ -21,19 +21,32 @@ show help | help menu:
 don't save | no save: user.select_dont_save()
 tab pin: key(shift-alt-p)
 
+^code <user.text>$:
+    user.open_vscode_project("{text}")
+
 # App launching
-coder: user.switcher_focus("Code")
-slack: user.switcher_focus("Slack")
-postman: user.switcher_focus("Postman")
-terminal | term: user.switcher_focus("term")
-brave | browse: user.switcher_focus("brave")
-messages | imessage: user.switcher_focus("Messages")
-chrome: user.switcher_focus("chrome")
-outlook: user.switcher_focus("outlook")
-teams: user.switcher_focus("teams")
-mail: user.switcher_focus("mail")
-merge: user.switcher_focus("Araxis Merge")
-clear notes: user.clear_notifications()
+^coder: user.switcher_focus("Code")
+
+^slack: user.switcher_focus("Slack")
+^postman: user.switcher_focus("Postman")
+^terminal | term: user.switcher_focus("term")
+^brave | browse: user.switcher_focus("brave")
+^browse reload | brave reload:
+    user.switcher_focus("brave")
+    key(cmd-r)
+# Chrome specific because I only use chrome for debugging webapps
+^chrome: user.switcher_focus("chrome")
+^chrome reload:
+    user.switcher_focus("chrome")
+    key(cmd-r)
+^messages | imessage: user.switcher_focus("Messages")
+^outlook: user.switcher_focus("outlook")
+^excel: user.switcher_focus("excel")
+^teams: user.switcher_focus("teams")
+^mail: user.switcher_focus("mail")
+^merge: user.switcher_focus("Araxis Merge")
+#clear notes: user.clear_notifications()
+clear notes: key(cmd-ctrl-shift-g)
 
 # Window functionality
 tile hide: key(cmd-h)
