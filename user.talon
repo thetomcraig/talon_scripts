@@ -1,7 +1,6 @@
 # keep this around to easily debug stuff
 run debug function:
     user.debugging()
-    user.hud_set_visibility(1)
 
 # Talon functions
 closing time: user.sleep_all()
