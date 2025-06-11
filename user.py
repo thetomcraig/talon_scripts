@@ -21,34 +21,30 @@ if DISABLE_BUILT_IN_POP_CLICK is True:
 
 mod = Module()
 
-def get_secret(desired_value: str):
+def read_csv_to_dict(file_path: str):
     """
-    Helper function to get secrets in a local csv file.
-    File should be CSV file in THIS directory, and look like:
-        secretName,secretValue
+    Read CSV files that are in the talon scripts directory
     """
-    secret_dict = {}
+    data_dict = {}
     user_dir_path = os.path.join(os.getcwd(), 'user', 'talon_scripts')
-
-    with open(os.path.join(user_dir_path, 'secrets.csv'), 'r') as f:
-        for line in f.readlines():
-            key, value = line.strip().split(',')
-            secret_dict[key] = value
-
-    return secret_dict[desired_value]
-
-def get_project_root_folder_name(desired_value: str):
-    folders = {}
-    user_dir_path = os.path.join(os.getcwd(), 'user', 'talon_scripts')
-
-    with open(os.path.join(user_dir_path, 'vscode_project_names.csv'), 'r') as f:
+    with open(os.path.join(user_dir_path, file_path), 'r') as f:
         for line in f.readlines():
             if not line.strip():
                 continue
             key, value = line.strip().split(',')
-            folders[key] = value
+            data_dict[key] = value
+    return data_dict
 
-    return folders.get(desired_value, desired_value)  # Return the value or the key if not found
+
+def get_secret(desired_value: str):
+    secret_dict = read_csv_to_dict('secrets.csv')
+    return secret_dict[desired_value]
+
+
+def get_project_root_folder_name(desired_value: str):
+    # TODO use the words to replace here to prevent a misspeaks
+    folders = read_csv_to_dict('vscode_project_names.csv') 
+    return folders.get(desired_value, desired_value)
 
 @ctx.action_class("user")
 class UserActions:
@@ -69,6 +65,10 @@ class UserActions:
 
     def sleep_eye_tracker():
         actions.tracking.control_zoom_toggle(False)
+        actions.app.notify("Eye tracking asleep")
+
+    def wake_eye_tracker():
+        actions.tracking.control_zoom_toggle(True)
         actions.app.notify("Eye tracking asleep")
 
     def sleep_all():
@@ -103,7 +103,22 @@ class UserActions:
         actions.user.open_url(f"https://ayadev.atlassian.net/browse/WIN-{task_number}")
 
     def open_vscode_project(project_name: str): 
-        """Open a vscode project"""
+        """
+        Switch to the open vscode window for the project "project_name".
+        We accomplish this by invoking the vscode project manager extension,
+        and putting in the project_name.
+
+        Caveat 1: if project_name is already in the frontmost vscode window,
+        the project manager extension will not list it as an option.
+        So we need to check if project_name is already open in the frontmost window.
+        VSCode and the project manager extension do not provide an API for this, so
+
+        There is no easy way to do this built into VSCode, so have to leverage the title of the window.
+        In my window.title settings, I have the root name of the folder in the title and use the separator " | "
+        The title settings look like this:
+            ${activeEditorShort}${separator}${rootName}${separator}${profileName}${separator}focus:[${focusedView}]
+        So, use talon to get the window title
+        """
         # Find the name of the root folder associated with the project
         # This is the project that we want to switch to
         root_folder_name = get_project_root_folder_name(project_name)
@@ -124,11 +139,12 @@ class UserActions:
         if root_folder_for_current_project == root_folder_name:
             # The front most project in VSCode is the one that we want, do nothing
             return
-        
+
+        actions.sleep("50ms") 
         actions.user.vscode("projectManager.listProjects")
-        actions.sleep("100ms")
+        actions.sleep("50ms")
         actions.insert(project_name)
-        actions.sleep("100ms")
+        actions.sleep("50ms")
         actions.key("enter")
 
 
