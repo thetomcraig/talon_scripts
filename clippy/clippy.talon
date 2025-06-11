@@ -1,4 +1,4 @@
-clippy | show clip | clip show | clipboard:
+clippy:
     user.clippy_command_no_targets("toggleShowHide")
 
 clippy search <user.text>:
@@ -21,3 +21,4 @@ clippy get <user.clippy_targets>:
 
 [clippy] paste <user.ordinals_small> [and <user.ordinals_small>]*:
     user.clippy_paste_indices(ordinals_small_list)
+
