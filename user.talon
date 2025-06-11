@@ -6,7 +6,8 @@ run debug function:
 closing time: user.sleep_all()
 she's coming | she's here: user.sleep_talon()
 calibrate: user.calibrate_eye_tracker()
-sleep I | sleep eye | sleep eyes: user.sleep_eye_tracker()
+sleep (I | eye | eyes): user.sleep_eye_tracker()
+awake I | awake eye | awake eyes: user.wake_eye_tracker()
 show log:
     insert('tail -f /Users/tomcraig/.talon/talon.log') 
     key(enter)
