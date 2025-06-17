@@ -75,7 +75,7 @@ class UserActions:
         actions.tracking.control_zoom_toggle(False)
         actions.speech.disable()
         app.notify("Turn in of work complete!!")
-        actions.sleep("180ms")
+        actions.sleep("180ms")  
         actions.user.system_command("pmset sleepnow")
 
     def enter_secret(desired_secret: str):
@@ -101,6 +101,11 @@ class UserActions:
     def open_winnow_jira_task(task_number: int): 
         """Open a winnow jira task"""
         actions.user.open_url(f"https://ayadev.atlassian.net/browse/WIN-{task_number}")
+
+    def insert_winnow_jira_number(task_number: int): 
+        """Paste a winnow jira number"""
+        actions.insert(f"https://ayadev.atlassian.net/browse/WIN-{task_number}")
+        actions.sleep("50ms")
 
     def open_vscode_project(project_name: str): 
         """
@@ -187,6 +192,9 @@ class Actions:
 
     def open_winnow_jira_task(task_number: int): 
         """Open a winnow jira task"""
+
+    def insert_winnow_jira_number(task_number: int): 
+        """Paste a winnow jira number"""
 
     def open_vscode_project(project_name: str): 
         """Open a vscode project"""

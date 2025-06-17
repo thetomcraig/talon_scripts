@@ -155,8 +155,10 @@ docker nuke volumes:
     key(enter)
 docker nuke all:
     insert('dcnk')
-win jira <number_small>$:
-    user.open_winnow_jira_task('{number_small}')
+win jira <number>$:
+    user.open_winnow_jira_task('{number}')
+(win | twin) (num | numb) <number>$:
+    user.insert_winnow_jira_number('{number}')
 az login:
     key(ctrl-c)
     # sleep(200ms)
