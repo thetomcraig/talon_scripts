@@ -1,50 +1,4 @@
 {
-	"pop": {
-		"sounds": ["pop_1"],
-		"threshold": {
-			">power": 10,
-			">probability": 0.9
-		},
-		"throttle": {
-			"pop": 0.15
-		}
-	},
-	"pop_1_airpods": {
-		"sounds": ["pop_1_airpods"],
-		"threshold": {
-			">power": 10,
-			">probability": 0.8
-		},
-		"throttle": {
-			"pop": 0.15
-		}
-	},
-	"hiss": {
-		"sounds": ["hiss"],
-		"detect_after":0.08,
-		"threshold": {
-			">power": 8,
-			">probability": 0.9
-		},
-		"graceperiod": 0.1,
-		"grace_threshold": {
-			">power": 5,
-			">probability": 0.6
-		}
-	},
-	"hiss_airpods": {
-		"sounds": ["hiss_airpods"],
-		"detect_after":0.1,
-		"threshold": {
-			">power": 3,
-			">probability": 0.6
-		},
-		"graceperiod": 0.1,
-		"grace_threshold": {
-			">power": 3,
-			">probability": 0.6
-		}
-	},
 	"shush": {
 		"sounds": ["sush"],
 		"detect_after":0.08,
@@ -59,34 +13,6 @@
 		},
 		"throttle": {
 			"ch": 0.2
-		}
-	},
-	"shush_airpods": {
-		"sounds": ["sush_airpods"],
-		"detect_after":0.08,
-		"threshold": {
-			">power": 3,
-			">probability": 0.9
-		},
-		"graceperiod": 0.1,		
-		"grace_threshold": {
-			">power": 3,
-			">probability": 0.4
-		},
-		"throttle": {
-			"ch": 0.2
-		}
-	},
-	"tsk": {
-		"sounds": ["tsk"],
-		"threshold": {
-			">power": 120,
-			">probability": 0.85
-		},
-		"graceperiod": 0.1,
-		"grace_threshold": {
-			">power": 5,
-			">probability": 0.6
 		}
 	}
 }
