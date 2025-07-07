@@ -166,8 +166,21 @@ class Actions:
     def sleep_eye_tracker():
         """Sleep the eye tracker"""
 
+    def wake_eye_tracker():
+        """Wake the eye tracker"""
+
     def sleep_all():
         """Sleep the computer and talon"""
+
+    def scroll_up_continuous_custom():
+        """Scroll up continuous only if talon is awake"""
+        if actions.speech.enabled():
+            actions.user.mouse_scroll_up_continuous()
+
+    def scroll_down_continuous_custom():
+        """Scroll down continuous only if talon is awake"""
+        if actions.speech.enabled():
+            actions.user.mouse_scroll_down_continuous()
 
     def debugging():
         """Where I debug stuff"""

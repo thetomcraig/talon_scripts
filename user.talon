@@ -1,6 +1,82 @@
 # keep this around to easily debug stuff
 run debug function:
     user.debugging()
+key(ctrl-cmd-d):
+    user.debugging()
+# face(scrunch_nose): user.debugging()
+# face(pucker_lips_right): 
+#     user.debugging()
+# face(raise_eyebrows):
+#     user.debugging()
+# face(brow_inner_up):
+#     user.debugging()
+# face(brow_inner_up:stop):
+#     user.debugging()
+# face(brow_down_left):
+#     user.debugging()
+# face(brow_down_left:stop):
+#     user.debugging()
+face(brow_inner_up):
+    user.scroll_up_continuous_custom()
+face(brow_inner_up:stop):
+  user.mouse_scroll_stop()
+face(smile_left):
+    user.scroll_down_continuous_custom()
+face(smile_left:stop):
+  user.mouse_scroll_stop()
+
+key(ctrl-cmd-t):
+    speech.toggle()
+    tracking.control_zoom_toggle()
+    app.notify("Talon toggled!")
+#All raw expressions:
+#  brow_down_left
+#  brow_down_right - false positives
+#  brow_inner_up - works
+#  brow_outer_up_left
+#  brow_outer_up_right
+#  blink_left - false positives
+#  blink_right - false positives
+#  gaze_down_left
+#  gaze_down_right
+#  gaze_in_left
+#  gaze_in_right
+#  #gaze_out_left
+#  gaze_out_right
+#  gaze_up_left
+#  gaze_up_right
+#  squint_left - false positives with blink
+#  squint_right - false positives with blink
+#  eye_wide_left - hard to trigger.
+#  eye_wide_right - Hard to trigger.
+#  jaw_open
+#  jaw_left
+#  jaw_right
+#  mouth_close
+#  dimple_left
+#  dimple_right
+#  frown_left
+#  #frown_right
+#  mouth_funnel - false positives
+#  mouth_lower_down_left
+#  mouth_lower_down_right
+#  mouth_press_left
+#  mouth_press_right
+#  mouth_pucker
+#  mouth_right
+#  mouth_left
+#  mouth_roll_lower
+#  mouth_roll_upper
+#  mouth_shrug_lower
+#  #mouth_shrug_upper
+#  smile_left
+#  smile_right
+#  mouth_stretch_left
+#  mouth_stretch_right
+#  mouth_upper_up_left
+#  mouth_upper_up_right
+
+
 
 # Talon functions
 closing time: user.sleep_all()
