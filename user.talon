@@ -26,7 +26,7 @@ tab pin: key(shift-alt-p)
 
 # App launching
 ^coder: user.switcher_focus("Code")
-
+^finder: user.switcher_focus("Finder")
 ^slack: user.switcher_focus("Slack")
 ^postman: user.switcher_focus("Postman")
 ^terminal | term: user.switcher_focus("term")
