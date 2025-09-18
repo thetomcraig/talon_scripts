@@ -1,0 +1,46 @@
+{
+    "talon": {
+        "workspace_root_folder": "talon_user",
+        "project_name": "talon"
+    },
+    "to town": {
+        "workspace_root_folder": "talon_user",
+        "project_name": "talon"
+    },
+    "talent": {
+        "workspace_root_folder": "talon_user",
+        "project_name": "talon"
+    },
+    "to talon": {
+        "workspace_root_folder": "talon_user",
+        "project_name": "talon"
+    },
+    "backend": {
+        "workspace_root_folder": "Winnow_v2_BE",
+        "project_name": "Winnow Back End"
+    },
+    "back end": {
+        "workspace_root_folder": "Winnow_v2_BE",
+        "project_name": "Winnow Back End"
+    },
+    "frontend": {
+        "workspace_root_folder": "Winnow2.0_FE",
+        "project_name": "Winnow Front End"
+    },
+    "front end": {
+        "workspace_root_folder": "Winnow2.0_FE",
+        "project_name": "Winnow Front End"
+    },
+    "notes": {
+        "workspace_root_folder": "notes",
+        "project_name": "notes"
+    },
+    "Winnow Packages": {
+        "workspace_root_folder": "WinnowPackages",
+        "project_name": "Winnow Packages"
+    },
+    "packages": {
+        "workspace_root_folder": "WinnowPackages",
+        "project_name": "Winnow Packages"
+    }
+}
